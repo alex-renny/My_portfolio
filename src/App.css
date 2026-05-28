@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Caveat:wght@400..700&family=Creepster&family=Lobster&family=Matemasie&family=Mochiy+Pop+One&family=Playwrite+FR+Trad:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Risque&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Skranji:wght@400;700&display=swap');
+
+.hh1 {
+  font-family: Poppins, system-ui;
+  font-size: 20px;
+}
+
+.hover:hover {
+  color: rgb(103, 103, 231);
+}
+
+#parallax {
+  line-height: 3;
+  font-size: 30px;
+}
+
+#wel {
+  font-size: 50px;
+  line-height: 1;
+}
+
+#img1 {
+  border-radius: 20px;
+}
+
+#h1 {
+  line-height: 100px;
+  color: white;
+}
+
+#h3 {
+  line-height: 70px;
+}
+
+nav {
+  z-index: 500;
+}
+
+#pg3 {
+  margin-bottom: 150px;
+}
+
+.logo:hover {
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+
+.sec2 {
+  min-height: 600px;
+}
+
+.sec3 {
+  min-height: 650px;
+}
+
+#img3 {
+  margin-top: 150px;
+}
+
+.ct:hover {
+  transition: 0.9s;
+  transform: scale(1.1);
+}
+
+.foot {
+  color: aliceblue;
+  text-align: center;
+  margin-bottom: 100px;
+  font-size: 40px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.am {
+  margin-left: 200px;
+  margin-top: 100px;
+}
+
+.border-custom {
+  border: 7px solid rgb(24, 21, 21);
+  box-shadow: 3px 3px 3px rgba(248, 247, 247, 0.4);
+}
+
+.parallax-bg {
+  background-image: url('https://wallpaperaccess.com/full/1567674.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(90%);
+}
+
+.parallax-text {
+  position: relative;
+  z-index: 1;
+}
+
+#skillsection {
+  min-height: 500px;
+}
+
+@media only screen and (max-width: 768px) {
+  #alex {
+    margin-right: 900px;
+  }
+
+  #parallax {
+    line-height: 2;
+    font-size: 20px;
+  }
+
+  #wel {
+    font-size: 30px;
+    line-height: 1.5;
+  }
+
+  #h1 {
+    line-height: 80px;
+    color: white;
+    font-size: 50px;
+  }
+
+  #h3 {
+    line-height: 70px;
+  }
+
+  #pg3 {
+    margin-bottom: 150px;
+  }
+
+  .sec2 {
+    min-height: 600px;
+  }
+
+  .sec3 {
+    min-height: 650px;
+  }
+
+  #img3 {
+    margin-top: 150px;
+  }
+
+  .foot {
+    font-size: 40px;
+  }
+
+  #alex {
+    margin-left: 250px;
+    font-size: 20px;
+  }
+
+  #work {
+    margin: 15px;
+  }
+
+  #skill {
+    font-size: 40px;
+    margin-top: -80px;
+  }
+
+  #skillset {
+    text-align: center;
+    padding: none;
+  }
+
+  #skillsection {
+    min-height: 600px;
+  }
+
+  #projects {
+    min-height: 500px;
+  }
+}
