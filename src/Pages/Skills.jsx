@@ -134,13 +134,13 @@ function Skills() {
   return (
     <section id="skills" className="skills-section" ref={sectionRef}>
       {/* Cursor Glow */}
-      <div 
+      {/* <div 
         className="cursor-follow"
         style={{
           '--mouse-x': `${mousePosition.x}px`,
           '--mouse-y': `${mousePosition.y}px`
         }}
-      ></div>
+      ></div> */}
 
       <div className="container">
         <div className="section-header">
