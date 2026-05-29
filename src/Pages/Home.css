@@ -380,9 +380,9 @@
   border-radius: inherit;
 }
 
-.profile-image-wrapper:hover .image-glow {
+/* .profile-image-wrapper:hover .image-glow {
   opacity: 1;
-}
+} */
 
 /* Floating Cards */
 .floating-card {

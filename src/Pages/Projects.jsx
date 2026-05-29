@@ -41,80 +41,80 @@ function Projects() {
       id: 1,
       title: 'Portfolio Website',
       description: 'A modern, responsive portfolio website built with React and advanced animations.',
-      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop',
+      image: './Portfolio.png',
       category: 'Web Apps',
       technologies: ['React', 'CSS3', 'JavaScript'],
       links: {
-        github: 'https://github.com/yourusername/portfolio',
-        live: 'https://portfolio.vercel.app'
+        github: 'https://github.com/alex-renny/My_portfolio',
+        live: 'https://alex-001.vercel.app/'
       },
       featured: true
     },
     {
       id: 2,
-      title: 'Cyber Forensics Toolkit',
-      description: 'A Python-based toolkit for digital forensics analysis and evidence collection.',
-      image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&h=400&fit=crop',
-      category: 'Cyber Security',
+      title: 'E-Com Website',
+      description: 'A modern e-commerce platform featuring product browsing, shopping cart functionality, secure user authentication, and a responsive design for seamless online shopping experiences.',
+      image: './Ecom.png',
+      category: 'Web Apps',
       technologies: ['Python', 'SQLite', 'Django'],
       links: {
-        github: 'https://github.com/yourusername/forensics-toolkit',
-        live: 'https://forensics-toolkit.vercel.app'
+        github: 'https://github.com/alex-renny/Ecom',
+        live: 'https://ecom-u76h.vercel.app/'
       },
       featured: true
     },
     {
       id: 3,
-      title: 'E-Commerce Dashboard',
-      description: 'Full-stack e-commerce dashboard with analytics, inventory management, and payment processing.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-      category: 'Full Stack',
+      title: 'Video Website',
+      description: 'A platform where you can upload your vlogs,shots and content videos.',
+      image: './VideoWeb.png',
+      category: 'Web Apps',
       technologies: ['React', 'Node.js', 'MongoDB'],
       links: {
-        github: 'https://github.com/yourusername/ecommerce-dashboard',
-        live: 'https://ecommerce-dash.vercel.app'
-      },
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'Network Security Scanner',
-      description: 'A comprehensive network vulnerability scanner with real-time threat detection capabilities.',
-      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop',
-      category: 'Cyber Security',
-      technologies: ['Python', 'Nmap', 'FastAPI'],
-      links: {
-        github: 'https://github.com/yourusername/security-scanner',
-        live: 'https://security-scanner.vercel.app'
+        github: 'https://github.com/alex-renny/Anivortex',
+        live: 'https://anivortex-kk7k.vercel.app/'
       },
       featured: true
     },
     {
-      id: 5,
-      title: 'Task Management App',
-      description: 'A collaborative task management tool with real-time updates and team features.',
-      image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop',
+      id: 4,
+      title: 'Valentines Web',
+      description: 'A Website where you can see the competition modules and register interface.',
+      image: './Valentine.png',
       category: 'Web Apps',
-      technologies: ['Next.js', 'Firebase', 'Tailwind'],
+      technologies: ['Python', 'Nmap', 'FastAPI'],
       links: {
-        github: 'https://github.com/yourusername/task-manager',
-        live: 'https://task-app.vercel.app'
+        github: 'https://github.com/alex-renny/Valentine-s-Web2.0',
+        live: 'https://alex-renny.github.io/Valentine-s-Web2.0/'
       },
       featured: false
     },
     {
-      id: 6,
-      title: 'UI Component Library',
-      description: 'A custom React component library with accessible, themeable, and reusable components.',
-      image: 'https://images.unsplash.com/photo-1613909207039-6b173b4df477?w=600&h=400&fit=crop',
-      category: 'UI/UX',
-      technologies: ['React', 'Storybook', 'TypeScript'],
+      id: 5,
+      title: 'Event Webpage',
+      description: 'A webpage where you can see the Upcoming program details.',
+      image: 'Event_Web.png',
+      category: 'Web Apps',
+      technologies: ['Next.js', 'Firebase', 'Tailwind'],
       links: {
-        github: 'https://github.com/yourusername/ui-library',
-        live: 'https://ui-library-demo.vercel.app'
+        github: 'https://github.com/alex-renny/Event-Project',
+        live: 'https://alex-renny.github.io/Event-Project/'
       },
       featured: false
-    }
+    },
+    // {
+    //   id: 6,
+    //   title: 'UI Component Library',
+    //   description: 'A custom React component library with accessible, themeable, and reusable components.',
+    //   image: 'https://images.unsplash.com/photo-1613909207039-6b173b4df477?w=600&h=400&fit=crop',
+    //   category: 'UI/UX',
+    //   technologies: ['React', 'Storybook', 'TypeScript'],
+    //   links: {
+    //     github: 'https://github.com/yourusername/ui-library',
+    //     live: 'https://ui-library-demo.vercel.app'
+    //   },
+    //   featured: false
+    // }
   ];
 
   const filteredProjects = activeFilter === 'All' 
@@ -124,13 +124,13 @@ function Projects() {
   return (
     <section id="projects" className="projects-section" ref={sectionRef}>
       {/* Cursor Glow */}
-      <div 
+      {/* <div 
         className="cursor-glow"
         style={{
           '--mouse-x': `${mousePosition.x}px`,
           '--mouse-y': `${mousePosition.y}px`
         }}
-      ></div>
+      ></div> */}
 
       <div className="container">
         <div className="section-header">
@@ -287,7 +287,7 @@ function Projects() {
 
         <div className="cta-wrapper">
           <a 
-            href="https://github.com/yourusername" 
+            href="https://github.com/alex-renny" 
             target="_blank" 
             rel="noopener noreferrer"
             className="cta-button"
