@@ -65,18 +65,18 @@ function Home() {
             <div className="social-proof">
               <div className="stats">
                 <div className="stat-item">
-                  <span className="stat-number">50+</span>
-                  <span className="stat-label">Projects</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
                   <span className="stat-number">5+</span>
-                  <span className="stat-label">Years Exp</span>
+                  <span className="stat-label">Project Build</span>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item">
-                  <span className="stat-number">30+</span>
-                  <span className="stat-label">Clients</span>
+                  <span className="stat-number">2</span>
+                  <span className="stat-label">Internships</span>
+                </div>
+                <div className="stat-divider"></div>
+                <div className="stat-item">
+                  <span className="stat-number">8+</span>
+                  <span className="stat-label">Certificates</span>
                 </div>
               </div>
             </div>
