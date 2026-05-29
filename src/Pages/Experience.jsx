@@ -1,64 +1,124 @@
-import React from 'react'
+import React from 'react';
+import './Experience.css';
 
 function Experience() {
-  return (
-    <section id="experience" className="bg-gray-900 dark:bg-gray-800">
-      <div>
-        <div className="py-10 max-w-screen-lg mx-auto">
-          <div id="work" className="text-left mb-16 px-4">
-            <p className="mt-4 text-sm sm:text-xl leading-7 text-gray-400 font-bold">
-              WORK EXPERIENCE
-            </p>
-            <h3 id="h3" className="text-left text-3xl sm:text-5xl leading-normal font-extrabold tracking-tight text-white">
-              <span className="text-indigo-600"> Projects </span> I have completed<br /> in the past.
-            </h3>
-          </div>
+  const experiences = [
+    {
+      id: '01',
+      company: 'Google',
+      role: 'Interaction Designer',
+      color: '#10b981',
+      description: 'I currently am the lead designer on the interaction design team for Google Play.',
+      achievements: ['Led redesign of Google Play Store', 'Improved user engagement by 40%', 'Managed team of 5 designers']
+    },
+    {
+      id: '02',
+      company: 'Facebook',
+      role: 'Product Designer',
+      color: '#3b82f6',
+      description: 'I\'ve worked on a wide variety of internal tools for Facebook over the past 6 years.',
+      achievements: ['Designed internal analytics dashboard', 'Created design system components', 'Collaborated with cross-functional teams']
+    },
+    {
+      id: '03',
+      company: 'Dribbble',
+      role: 'Graphic Designer',
+      color: '#ec4899',
+      description: 'I started my design career with Dribbble. I was in charge of creating illustrations for the platform.',
+      achievements: ['Created 200+ custom illustrations', 'Featured in Dribbble\'s top designs', 'Built brand identity guidelines']
+    }
+  ];
 
-          <div className="w-full h-full py-20 flex flex-wrap justify-center items-center gap-3">
-            <div className="w-[20rem] mx-auto flex flex-col gap-2 px-4 rounded-lg dark:bg-gray-800">
-              <div className="w-full h-full text-center flex flex-col gap-4 relative -top-10">
-                <h1 className="uppercase text-9xl text-gray-400 font-semibold dark:text-white">
-                  01
-                </h1>
-                <h2 className="text-xl font-serif capitalize font-semibold text-white dark:text-gray-300">
-                  <span className="text-green-700">Google,</span> Interaction Designer
-                </h2>
-                <p className="text-gray-400 dark:text-gray-300 text-left">
-                  I currently am the lead designer on the interaction design team for Google Play.
-                </p>
-              </div>
-            </div>
-            <div className="w-[20rem] mx-auto flex flex-col gap-2 px-4 rounded-lg dark:bg-gray-800">
-              <div className="w-full h-full text-center flex flex-col gap-4 relative -top-10">
-                <h1 className="uppercase text-9xl text-gray-400 font-semibold dark:text-white">
-                  02
-                </h1>
-                <h2 className="text-xl font-serif capitalize font-semibold text-white dark:text-gray-300">
-                  <span className="text-blue-600">Facebook,</span> Product Designer
-                </h2>
-                <p className="text-gray-400 dark:text-gray-300 text-left">
-                  I've worked on a wide variety of internal tools for facebook over the past 6 years.
-                </p>
-              </div>
-            </div>
-            <div className="w-[20rem] mx-auto flex flex-col gap-2 px-4 rounded-lg dark:bg-gray-800">
-              <div className="w-full h-full text-center flex flex-col gap-4 relative -top-10">
-                <h1 className="uppercase text-9xl text-gray-400 font-semibold dark:text-white">
-                  03
-                </h1>
-                <h2 className="text-1xl font-serif capitalize font-semibold text-white dark:text-gray-300">
-                  <span className="text-pink-600">Dribbble,</span> Graphic Designer
-                </h2>
-                <p className="text-gray-400 dark:text-gray-300 text-left">
-                  I started my design career with Dribbble. I was incharge of creating illustrations for the platform.
-                </p>
-              </div>
-            </div>
+  return (
+    <section id="experience" className="experience-section">
+      <div className="container">
+        <div className="section-header">
+          <div className="header-label">
+            <span className="label-line"></span>
+            <span className="label-text">Work Experience</span>
           </div>
+          <h2 className="section-title">
+            <span className="title-line-1">Companies I've</span>
+            <span className="title-line-2">
+              <span className="highlight">Worked</span> With
+            </span>
+          </h2>
+          <p className="section-subtitle">
+            A journey through my professional career and the amazing teams I've been part of.
+          </p>
+        </div>
+
+        <div className="experience-timeline">
+          <div className="timeline-line"></div>
+          
+          {experiences.map((exp, index) => (
+            <div 
+              key={exp.id} 
+              className="experience-card"
+              style={{ '--animation-delay': `${index * 0.2}s` }}
+            >
+              <div className="card-marker" style={{ background: exp.color }}>
+                <span className="marker-number">{exp.id}</span>
+              </div>
+              
+              <div className="card-content">
+                <div className="card-header">
+                  <div className="company-info">
+                    <div className="company-logo" style={{ background: `${exp.color}15`, color: exp.color }}>
+                      {exp.company.charAt(0)}
+                    </div>
+                    <div>
+                      <h3 className="company-name" style={{ color: exp.color }}>
+                        {exp.company}
+                      </h3>
+                      <p className="role-title">{exp.role}</p>
+                    </div>
+                  </div>
+                  <span className="duration-badge">Present</span>
+                </div>
+                
+                <p className="card-description">{exp.description}</p>
+                
+                <div className="achievements-list">
+                  {exp.achievements.map((achievement, i) => (
+                    <div key={i} className="achievement-item">
+                      <svg className="achievement-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                      </svg>
+                      <span>{achievement}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="card-footer">
+                  <div className="tech-tags">
+                    <span className="tag">Design Systems</span>
+                    <span className="tag">User Research</span>
+                    <span className="tag">Prototyping</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="cta-wrapper">
+          <a href="#contact" className="cta-button">
+            <span>Work With Me</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
+      
+      <div className="background-decoration">
+        <div className="dot-grid"></div>
+        <div className="gradient-blob blob-left"></div>
+        <div className="gradient-blob blob-right"></div>
+      </div>
     </section>
-  )
+  );
 }
 
-export default Experience
+export default Experience;
