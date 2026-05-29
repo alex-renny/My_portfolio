@@ -140,13 +140,13 @@ function Experience() {
   return (
     <section id="experience" className="experience-section">
       {/* Cursor Follow Effect */}
-      <div 
+      {/* <div 
         className="cursor-glow"
         style={{
           '--mouse-x': `${mousePosition.x}px`,
           '--mouse-y': `${mousePosition.y}px`
         }}
-      ></div>
+      ></div> */}
 
       <div className="container">
         <div className="section-header">

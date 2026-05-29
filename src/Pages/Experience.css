@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-/* Cursor Glow Effect */
+/* Cursor Glow Effect
 .cursor-glow {
   position: fixed;
   pointer-events: none;
@@ -19,7 +19,7 @@
   left: var(--mouse-x);
   top: var(--mouse-y);
   transition: opacity 0.3s ease;
-}
+} */
 
 .container {
   max-width: 1200px;
