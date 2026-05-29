@@ -13,8 +13,7 @@ function Home() {
           playsInline
           className="background-video"
         >
-          <source src="/your-background-video.mp4" type="video/mp4" />
-          {/* Fallback background if video doesn't load */}
+          <source src="/Bg_looping_vid.mp4" type="video/mp4" />
         </video>
         <div className="video-overlay"></div>
       </div>
@@ -37,7 +36,7 @@ function Home() {
                 <span className="static-text">I'm a </span>
                 <div className="dynamic-text-wrapper">
                   <span className="dynamic-text">
-                    Cyber Forensics Student
+                    {/* Cyber Forensics Student */}
                   </span>
                 </div>
               </div>
@@ -103,10 +102,9 @@ function Home() {
                 </div>
               </div>
               <div className="floating-card card-2">
-                <div className="card-icon">⭐</div>
                 <div className="card-text">
-                  <small>Top Rated</small>
-                  <strong>Developer</strong>
+                  <small>Cyber Forensics</small>
+                  <strong>Student</strong>
                 </div>
               </div>
               <div className="particle particle-1"></div>
