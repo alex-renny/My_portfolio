@@ -1,60 +1,93 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './About.css';
 
 function About() {
+  const parallaxRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const handleParallax = (e) => {
+      if (parallaxRef.current) {
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        
+        const moveX = (clientX - innerWidth / 2) / innerWidth * 20;
+        const moveY = (clientY - innerHeight / 2) / innerHeight * 20;
+        
+        parallaxRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      }
+    };
+
+    const handleScroll = () => {
+      if (imageRef.current) {
+        const scrolled = window.scrollY;
+        const rate = scrolled * 0.05;
+        imageRef.current.style.transform = `translateY(${rate}px)`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleParallax);
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleParallax);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+
   return (
     <section id="about" className="about-section">
       <div className="container">
         <div className="about-content">
           <div className="about-visual">
-            <div className="image-wrapper">
+            <div className="image-wrapper" ref={imageRef}>
               <div className="image-container">
                 <img
                   src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
                   alt="Alex - Web Developer"
                   className="profile-image"
                 />
+                <div className="image-overlay"></div>
                 <div className="image-border"></div>
               </div>
               
               <div className="experience-badge">
+                <div className="badge-pulse"></div>
                 <div className="badge-content">
                   <span className="badge-number">5+</span>
-                  <span className="badge-label">Years of<br/>Experience</span>
+                  <span className="badge-label">Projects</span>
                 </div>
               </div>
               
-              <div className="tech-stack-float">
-                <div className="tech-icons">
-                  <span className="tech-icon" title="React">⚛️</span>
-                  <span className="tech-icon" title="Node.js">🟢</span>
-                  <span className="tech-icon" title="JavaScript">💛</span>
-                  <span className="tech-icon" title="TypeScript">💙</span>
-                </div>
+              <div className="floating-shapes" ref={parallaxRef}>
+                <div className="shape shape-circle"></div>
+                <div className="shape shape-triangle"></div>
+                <div className="shape shape-square"></div>
+                <div className="shape shape-dots"></div>
               </div>
-              
-              <div className="shape-decoration shape-1"></div>
-              <div className="shape-decoration shape-2"></div>
             </div>
           </div>
           
           <div className="about-text">
-            <div className="section-label">
-              <span className="label-line"></span>
+            <div className="section-label reveal-text">
+              <span className="label-dot"></span>
               <span className="label-text">About Me</span>
+              <span className="label-line"></span>
             </div>
             
-            <h2 className="about-heading">
+            <h2 className="about-heading reveal-text">
               <span className="heading-line-1">Crafting Digital</span>
               <span className="heading-line-2">
                 <span className="highlight">Experiences</span> That Matter
               </span>
             </h2>
             
-            <div className="about-description">
+            <div className="about-description reveal-text">
               <p className="description-text">
-                I'm a passionate web developer with a keen eye for design and a love for creating 
-                seamless digital experiences. Based in India, I specialize in building modern, 
+                I'm a passionate web developer and 
+                <span className="text-highlight"> Cyber Forensics student </span> 
+                with a keen eye for design. Based in India, I specialize in building modern, 
                 responsive web applications that solve real-world problems.
               </p>
               <p className="description-text secondary">
@@ -105,19 +138,22 @@ function About() {
                 </div>
               </div>
             </div>
+
             
-            <div className="cta-group">
-              <a href="#projects" className="btn-primary">
+            <div className="cta-group reveal-text">
+              <a href="#projects" className="btn-primary ripple-btn">
                 <span>View Projects</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
+                <div className="btn-shine"></div>
               </a>
-              <a href="#contact" className="btn-secondary">
+              <a href="#contact" className="btn-secondary ripple-btn">
                 <span>Let's Talk</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M2.5 5.83333L10 10.4167L17.5 5.83333M2.5 14.1667L10 10.4167L17.5 14.1667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
+                <div className="btn-shine"></div>
               </a>
             </div>
           </div>
@@ -128,7 +164,18 @@ function About() {
         <div className="grid-overlay"></div>
         <div className="accent-circle circle-1"></div>
         <div className="accent-circle circle-2"></div>
-        <div className="dot-pattern"></div>
+        <div className="accent-circle circle-3"></div>
+        <div className="floating-particles">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className="particle" style={{
+              '--x': `${Math.random() * 100}%`,
+              '--y': `${Math.random() * 100}%`,
+              '--size': `${Math.random() * 4 + 2}px`,
+              '--duration': `${Math.random() * 10 + 10}s`,
+              '--delay': `${Math.random() * 5}s`
+            }}></div>
+          ))}
+        </div>
       </div>
     </section>
   );
