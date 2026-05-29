@@ -1,39 +1,137 @@
-import React from 'react'
+import React from 'react';
+import './About.css';
 
 function About() {
   return (
-    <section id="about" className="bg-gray-900 dark:bg-gray-900">
-      <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
-        <div className="lg:mt-0 lg:col-span-5 lg:flex px-5">
-          <img
-            id="img1"
-            src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
-            alt="mockup"
-            className="w-full"
-          />
-        </div>
-        <div className="mr-auto place-self-center lg:col-span-7 px-9">
-          <h1 id="h1" className="mb-4 text-9xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">
-            <span className="hover">I'm Alex.</span><br />
-            A Website <br />Developer<br />
-            <span className="text-gray-500">based in India.</span>
-          </h1>
-          <p className="max-w-2xl mb-6 font-light text-gray-300 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-300 hh1">
-            I'm probably the most passionate designer you will ever get to work with. If you have a great project that needs some amazing skills, I'm your guy.
-          </p>
-          <a href="#" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-            Get started
-            <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-            </svg>
-          </a>
-          <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-300 border border-gray-300 rounded-lg hover:bg-gray-600 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-            Know Me
-          </a>
+    <section id="about" className="about-section">
+      <div className="container">
+        <div className="about-content">
+          <div className="about-visual">
+            <div className="image-wrapper">
+              <div className="image-container">
+                <img
+                  src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
+                  alt="Alex - Web Developer"
+                  className="profile-image"
+                />
+                <div className="image-border"></div>
+              </div>
+              
+              <div className="experience-badge">
+                <div className="badge-content">
+                  <span className="badge-number">5+</span>
+                  <span className="badge-label">Years of<br/>Experience</span>
+                </div>
+              </div>
+              
+              <div className="tech-stack-float">
+                <div className="tech-icons">
+                  <span className="tech-icon" title="React">⚛️</span>
+                  <span className="tech-icon" title="Node.js">🟢</span>
+                  <span className="tech-icon" title="JavaScript">💛</span>
+                  <span className="tech-icon" title="TypeScript">💙</span>
+                </div>
+              </div>
+              
+              <div className="shape-decoration shape-1"></div>
+              <div className="shape-decoration shape-2"></div>
+            </div>
+          </div>
+          
+          <div className="about-text">
+            <div className="section-label">
+              <span className="label-line"></span>
+              <span className="label-text">About Me</span>
+            </div>
+            
+            <h2 className="about-heading">
+              <span className="heading-line-1">Crafting Digital</span>
+              <span className="heading-line-2">
+                <span className="highlight">Experiences</span> That Matter
+              </span>
+            </h2>
+            
+            <div className="about-description">
+              <p className="description-text">
+                I'm a passionate web developer with a keen eye for design and a love for creating 
+                seamless digital experiences. Based in India, I specialize in building modern, 
+                responsive web applications that solve real-world problems.
+              </p>
+              <p className="description-text secondary">
+                With expertise in both frontend and backend technologies, I bring ideas to life 
+                through clean code and intuitive design. Every project is an opportunity to create 
+                something extraordinary.
+              </p>
+            </div>
+            
+            <div className="skills-highlight">
+              <div className="skill-item">
+                <div className="skill-icon-wrapper">
+                  <svg className="skill-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="skill-info">
+                  <h4>Full Stack Development</h4>
+                  <p>End-to-end web solutions with modern tech stack</p>
+                </div>
+              </div>
+              
+              <div className="skill-item">
+                <div className="skill-icon-wrapper">
+                  <svg className="skill-icon" viewBox="0 0 24 24" fill="none">
+                    <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M3 9H21" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M9 21V9" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                </div>
+                <div className="skill-info">
+                  <h4>UI/UX Design</h4>
+                  <p>Creating intuitive and beautiful user interfaces</p>
+                </div>
+              </div>
+              
+              <div className="skill-item">
+                <div className="skill-icon-wrapper">
+                  <svg className="skill-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div className="skill-info">
+                  <h4>Performance Optimization</h4>
+                  <p>Lightning-fast, optimized web applications</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="cta-group">
+              <a href="#projects" className="btn-primary">
+                <span>View Projects</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <a href="#contact" className="btn-secondary">
+                <span>Let's Talk</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M2.5 5.83333L10 10.4167L17.5 5.83333M2.5 14.1667L10 10.4167L17.5 14.1667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+      
+      <div className="background-elements">
+        <div className="grid-overlay"></div>
+        <div className="accent-circle circle-1"></div>
+        <div className="accent-circle circle-2"></div>
+        <div className="dot-pattern"></div>
+      </div>
     </section>
-  )
+  );
 }
 
-export default About
+export default About;
