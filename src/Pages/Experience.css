@@ -1,9 +1,24 @@
 /* Experience Section Styles */
 .experience-section {
   position: relative;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
-  padding: 120px 20px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 30%, #f8fafc 70%, #ffffff 100%);
+  padding: 80px 20px;
   overflow: hidden;
+}
+
+/* Cursor Glow Effect */
+.cursor-glow {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(175, 99, 241, 0.08) 0%, transparent 50%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  transition: opacity 0.3s ease;
 }
 
 .container {
@@ -25,15 +40,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 20px;
 }
 
-.label-line {
-  width: 40px;
-  height: 2px;
-  background: linear-gradient(90deg, #6366f1, #8b5cf6);
-  border-radius: 2px;
+.label-dot {
+  width: 6px;
+  height: 6px;
+  background: #6366f1;
+  border-radius: 50%;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+.label-dot:last-child {
+  animation-delay: 1s;
 }
 
 .label-text {
@@ -70,7 +90,7 @@
 .section-subtitle {
   font-size: 18px;
   color: #94a3b8;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
@@ -88,12 +108,43 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, 
-    rgba(99, 102, 241, 0.1),
-    rgba(99, 102, 241, 0.3) 50%,
-    rgba(139, 92, 246, 0.1)
-  );
+  background: rgba(99, 102, 241, 0.1);
 }
+
+.timeline-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  transition: height 0.3s ease;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}
+
+.timeline-dots {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border: 2px solid #6366f1;
+  border-radius: 50%;
+}
+
+.timeline-dot:nth-child(1) { top: 12%; }
+.timeline-dot:nth-child(2) { top: 37%; }
+.timeline-dot:nth-child(3) { top: 62%; }
+.timeline-dot:nth-child(4) { top: 87%; }
 
 /* Experience Card */
 .experience-card {
@@ -103,31 +154,46 @@
   animation: slideInLeft 0.6s ease-out;
   animation-delay: var(--animation-delay);
   animation-fill-mode: both;
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
 }
 
 .card-marker {
   position: absolute;
   left: 24px;
   top: 32px;
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 2;
   box-shadow: 0 0 0 8px white, 0 0 0 10px rgba(99, 102, 241, 0.2);
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.marker-pulse {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.3;
+  animation: markerPulse 2s ease-in-out infinite;
 }
 
 .experience-card:hover .card-marker {
   transform: scale(1.2);
+  box-shadow: 0 0 0 8px white, 0 0 0 12px rgba(99, 102, 241, 0.3), 0 0 30px rgba(99, 102, 241, 0.3);
 }
 
 .marker-number {
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
+  position: relative;
+  z-index: 1;
 }
 
 .card-content {
@@ -135,14 +201,26 @@
   border-radius: 20px;
   padding: 32px;
   border: 1px solid #f1f5f9;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.experience-card:hover .card-glow {
+  opacity: 1;
 }
 
 .card-content:hover {
   border-color: #6366f1;
   box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.15);
-  transform: translateX(5px);
 }
 
 /* Card Header */
@@ -153,6 +231,8 @@
   margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .company-info {
@@ -162,20 +242,34 @@
 }
 
 .company-logo {
-  width: 50px;
-  height: 50px;
+  width: 52px;
+  height: 52px;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
-  font-weight: 800;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .company-logo {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.logo-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .company-name {
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 4px;
+  transition: all 0.3s ease;
 }
 
 .role-title {
@@ -186,11 +280,14 @@
 
 .duration-badge {
   padding: 6px 16px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
-  color: #6366f1;
   border-radius: 20px;
   font-size: 13px;
   font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .duration-badge {
+  transform: scale(1.05);
 }
 
 /* Card Description */
@@ -199,6 +296,8 @@
   color: #64748b;
   line-height: 1.7;
   margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 /* Achievements */
@@ -207,12 +306,20 @@
   flex-direction: column;
   gap: 12px;
   margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .achievement-item {
   display: flex;
   align-items: center;
   gap: 12px;
+  transition: all 0.3s ease;
+  padding: 4px 0;
+}
+
+.achievement-item:hover {
+  transform: translateX(5px);
 }
 
 .achievement-icon {
@@ -220,6 +327,11 @@
   height: 18px;
   color: #10b981;
   flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.achievement-item:hover .achievement-icon {
+  transform: scale(1.2);
 }
 
 .achievement-item span {
@@ -232,6 +344,8 @@
 .card-footer {
   padding-top: 20px;
   border-top: 1px solid #f1f5f9;
+  position: relative;
+  z-index: 1;
 }
 
 .tech-tags {
@@ -241,7 +355,7 @@
 }
 
 .tag {
-  padding: 4px 12px;
+  padding: 6px 14px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
@@ -249,12 +363,36 @@
   color: #64748b;
   font-weight: 500;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .tag:hover {
   background: #6366f1;
   color: white;
   border-color: #6366f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Card Decoration */
+.card-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.decoration-line {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 3px;
+  height: 60px;
+  border-radius: 3px;
+  opacity: 0.3;
 }
 
 /* CTA */
@@ -276,11 +414,32 @@
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.3) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+}
+
+.cta-button:hover .btn-shine {
+  transform: translateX(100%);
+}
+
+.cta-button:active {
+  transform: scale(0.95);
 }
 
 .cta-button svg {
@@ -302,39 +461,69 @@
   z-index: 1;
 }
 
-.dot-grid {
+.grid-pattern {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(circle, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
 .gradient-blob {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.08;
+  opacity: 0.06;
 }
 
-.blob-left {
-  width: 400px;
-  height: 400px;
+.blob-1 {
+  width: 500px;
+  height: 500px;
   background: #6366f1;
-  top: -100px;
-  left: -100px;
+  top: -150px;
+  right: -150px;
   animation: floatBlob 20s ease-in-out infinite;
 }
 
-.blob-right {
-  width: 350px;
-  height: 350px;
+.blob-2 {
+  width: 400px;
+  height: 400px;
   background: #8b5cf6;
   bottom: -100px;
-  right: -100px;
+  left: -100px;
   animation: floatBlob 25s ease-in-out infinite reverse;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: #a78bfa;
+  top: 60%;
+  left: 50%;
+  animation: floatBlob 18s ease-in-out infinite;
+}
+
+/* Floating Particles */
+.floating-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.floating-particle {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: #6366f1;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleRise var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
 }
 
 /* Animations */
@@ -360,15 +549,51 @@
   }
 }
 
+@keyframes markerPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0.3;
+  }
+}
+
 @keyframes floatBlob {
   0%, 100% {
     transform: translate(0, 0) scale(1);
   }
   33% {
-    transform: translate(30px, -50px) scale(1.1);
+    transform: translate(30px, -50px) scale(1.2);
   }
   66% {
-    transform: translate(-20px, 30px) scale(0.9);
+    transform: translate(-20px, 30px) scale(0.8);
+  }
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
   }
 }
 
@@ -397,8 +622,8 @@
   .card-marker {
     left: 4px;
     top: 24px;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
   }
   
   .card-content {
@@ -406,10 +631,9 @@
   }
   
   .company-logo {
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
-    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
   }
   
   .company-name {
@@ -428,6 +652,10 @@
   .section-subtitle {
     font-size: 16px;
   }
+  
+  .cursor-glow {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -437,12 +665,12 @@
   
   .card-marker {
     left: 0;
-    width: 26px;
-    height: 26px;
+    width: 28px;
+    height: 28px;
   }
   
   .marker-number {
-    font-size: 10px;
+    font-size: 11px;
   }
   
   .card-content {
@@ -456,5 +684,13 @@
   .cta-button {
     width: 100%;
     justify-content: center;
+  }
+  
+  .card-decoration {
+    display: none;
+  }
+  
+  .timeline-dots {
+    display: none;
   }
 }

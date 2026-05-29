@@ -1,7 +1,7 @@
 /* About Section Styles */
 .about-section {
   position: relative;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 30%, #ffffff 70%, #f8fafc 100%);
+  background: linear-gradient(180deg, #e1e1e1 0%, #f8fafc 30%, #ffffff 70%, #f8fafc 100%);
   padding: 120px 20px;
   overflow: hidden;
 }
