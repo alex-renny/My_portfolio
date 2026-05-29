@@ -4,6 +4,21 @@ import './Home.css';
 function Home() {
   return (
     <section id="home" className="home-section">
+      {/* Video Background */}
+      <div className="video-background">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="background-video"
+        >
+          <source src="/your-background-video.mp4" type="video/mp4" />
+          {/* Fallback background if video doesn't load */}
+        </video>
+        <div className="video-overlay"></div>
+      </div>
+
       <div className="container">
         <div className="home-content">
           <div className="home-text">
@@ -13,18 +28,18 @@ function Home() {
             </div>
             
             <h1 className="name-title">
-              <span className="name-first">Your</span>
-              <span className="name-last">Name</span>
+              <span className="name-first">Alex</span>
+              <span className="name-last">Renny</span>
             </h1>
             
             <div className="role-wrapper">
               <div className="typing-container">
                 <span className="static-text">I'm a </span>
-                <span className="dynamic-text">
-                  <span>Full Stack Developer</span>
-                  <span>UI/UX Designer</span>
-                  <span>Problem Solver</span>
-                </span>
+                <div className="dynamic-text-wrapper">
+                  <span className="dynamic-text">
+                    Cyber Forensics Student
+                  </span>
+                </div>
               </div>
             </div>
             
@@ -71,11 +86,13 @@ function Home() {
           <div className="home-visual">
             <div className="profile-container">
               <div className="profile-shape">
-                <div className="profile-image-placeholder">
-                  <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
-                    <circle cx="100" cy="80" r="40" fill="#E5E7EB"/>
-                    <ellipse cx="100" cy="170" rx="60" ry="50" fill="#E5E7EB"/>
-                  </svg>
+                <div className="profile-image-wrapper">
+                  <img
+                    src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
+                    alt="Alex Renny - Portfolio"
+                    className="profile-image"
+                  />
+                  <div className="image-glow"></div>
                 </div>
               </div>
               <div className="floating-card card-1">
@@ -92,8 +109,10 @@ function Home() {
                   <strong>Developer</strong>
                 </div>
               </div>
-              <div className="blob-shape blob-1"></div>
-              <div className="blob-shape blob-2"></div>
+              <div className="particle particle-1"></div>
+              <div className="particle particle-2"></div>
+              <div className="particle particle-3"></div>
+              <div className="particle particle-4"></div>
             </div>
           </div>
         </div>
@@ -104,13 +123,6 @@ function Home() {
             <div className="scroll-wheel"></div>
           </div>
         </div>
-      </div>
-      
-      <div className="background-decoration">
-        <div className="grid-pattern"></div>
-        <div className="gradient-orb gradient-orb-1"></div>
-        <div className="gradient-orb gradient-orb-2"></div>
-        <div className="gradient-orb gradient-orb-3"></div>
       </div>
     </section>
   );
