@@ -4,18 +4,58 @@ import './Home.css';
 function Home() {
   return (
     <section id="home" className="home-section">
-      {/* Video Background */}
-      <div className="video-background">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="background-video"
-        >
-          <source src="/Bg_looping_vid.mp4" type="video/mp4" />
-        </video>
-        <div className="video-overlay"></div>
+      {/* Background Image */}
+      <div className="background-image-wrapper">
+        <img
+          src="/1780137331105-Photoroom.png"
+          alt="Background"
+          className="background-image"
+        />
+        <div className="image-overlay"></div>
+        
+        {/* Animated gradient mesh */}
+        <div className="gradient-mesh">
+          <div className="mesh-orb mesh-1"></div>
+          <div className="mesh-orb mesh-2"></div>
+          <div className="mesh-orb mesh-3"></div>
+          <div className="mesh-orb mesh-4"></div>
+        </div>
+        
+        {/* Floating geometric shapes */}
+        <div className="geo-shapes">
+          <div className="geo-shape geo-circle"></div>
+          <div className="geo-shape geo-ring"></div>
+          <div className="geo-shape geo-diamond"></div>
+          <div className="geo-shape geo-hexagon"></div>
+        </div>
+        
+        {/* Animated lines */}
+        <div className="animated-lines">
+          <div className="line line-1"></div>
+          <div className="line line-2"></div>
+          <div className="line line-3"></div>
+        </div>
+        
+        {/* Particle network */}
+        <div className="particle-network">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="network-particle"
+              style={{
+                '--x': `${Math.random() * 100}%`,
+                '--y': `${Math.random() * 100}%`,
+                '--size': `${Math.random() * 3 + 1}px`,
+                '--duration': `${Math.random() * 15 + 10}s`,
+                '--delay': `${Math.random() * 8}s`,
+                '--opacity': Math.random() * 0.5 + 0.2
+              }}
+            ></div>
+          ))}
+        </div>
+        
+        {/* Grid overlay */}
+        <div className="tech-grid"></div>
       </div>
 
       <div className="container">
@@ -35,9 +75,7 @@ function Home() {
               <div className="typing-container">
                 <span className="static-text">I'm a </span>
                 <div className="dynamic-text-wrapper">
-                  <span className="dynamic-text">
-                    {/* Cyber Forensics Student */}
-                  </span>
+                  <span className="dynamic-text"></span>
                 </div>
               </div>
             </div>
@@ -66,7 +104,7 @@ function Home() {
               <div className="stats">
                 <div className="stat-item">
                   <span className="stat-number">5+</span>
-                  <span className="stat-label">Project Build</span>
+                  <span className="stat-label">Projects</span>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item">
@@ -84,39 +122,50 @@ function Home() {
           
           <div className="home-visual">
             <div className="profile-container">
-              <div className="profile-shape">
+              {/* <div className="profile-orbital">
+                <div className="orbit-ring ring-1"></div>
+                <div className="orbit-ring ring-2"></div>
+                <div className="orbit-ring ring-3"></div>
+                <div className="orbit-dot dot-1"></div>
+                <div className="orbit-dot dot-2"></div>
+                <div className="orbit-dot dot-3"></div>
+              </div> */}
+              
+              {/* <div className="profile-shape">
                 <div className="profile-image-wrapper">
                   <img
                     src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
                     alt="Alex Renny - Portfolio"
                     className="profile-image"
                   />
-                  <div className="image-glow"></div>
                 </div>
-              </div>
+              </div> */}
+              
               <div className="floating-card card-1">
-                <div className="card-icon">💻</div>
+                <div className="card-icon-wrapper">
+                  <span className="card-emoji">💻</span>
+                </div>
                 <div className="card-text">
                   <small>Available for</small>
                   <strong>Freelance</strong>
                 </div>
               </div>
+              
               <div className="floating-card card-2">
+                <div className="card-icon-wrapper">
+                  <span className="card-emoji">🔒</span>
+                </div>
                 <div className="card-text">
                   <small>Cyber Forensics</small>
                   <strong>Student</strong>
                 </div>
               </div>
-              <div className="particle particle-1"></div>
-              <div className="particle particle-2"></div>
-              <div className="particle particle-3"></div>
-              <div className="particle particle-4"></div>
             </div>
           </div>
         </div>
         
         <div className="scroll-indicator">
-          <span>Scroll to explore</span>
+          <span className="scroll-text">Scroll to explore</span>
           <div className="scroll-mouse">
             <div className="scroll-wheel"></div>
           </div>
