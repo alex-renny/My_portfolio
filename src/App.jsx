@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from './Pages/Navbar'
-import Home from './Pages/Home'
+import HomeLoad from './Pages/HomeLoad'
 import About from './Pages/About'
 import Experience from './Pages/Experience'
 import Skills from './Pages/Skills'
@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      <Home />
+      <HomeLoad />
       <About />
       <Experience />
       <Skills />
