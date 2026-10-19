@@ -4,173 +4,32 @@ import './Home.css';
 function Home() {
   return (
     <section id="home" className="home-section">
-      {/* Background Image */}
-      <div className="background-image-wrapper">
-        <img
-          src="/1780137331105-Photoroom.png"
-          alt="Background"
-          className="background-image"
-        />
-        <div className="image-overlay"></div>
-        
-        {/* Animated gradient mesh */}
-        <div className="gradient-mesh">
-          <div className="mesh-orb mesh-1"></div>
-          <div className="mesh-orb mesh-2"></div>
-          <div className="mesh-orb mesh-3"></div>
-          <div className="mesh-orb mesh-4"></div>
-        </div>
-        
-        {/* Floating geometric shapes */}
-        <div className="geo-shapes">
-          <div className="geo-shape geo-circle"></div>
-          <div className="geo-shape geo-ring"></div>
-          <div className="geo-shape geo-diamond"></div>
-          <div className="geo-shape geo-hexagon"></div>
-        </div>
-        
-        {/* Animated lines */}
-        <div className="animated-lines">
-          <div className="line line-1"></div>
-          <div className="line line-2"></div>
-          <div className="line line-3"></div>
-        </div>
-        
-        {/* Particle network */}
-        <div className="particle-network">
-          {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="network-particle"
-              style={{
-                '--x': `${Math.random() * 100}%`,
-                '--y': `${Math.random() * 100}%`,
-                '--size': `${Math.random() * 3 + 1}px`,
-                '--duration': `${Math.random() * 15 + 10}s`,
-                '--delay': `${Math.random() * 8}s`,
-                '--opacity': Math.random() * 0.5 + 0.2
-              }}
-            ></div>
-          ))}
-        </div>
-        
-        {/* Grid overlay */}
-        <div className="tech-grid"></div>
-      </div>
-
-      <div className="container">
-        <div className="home-content">
-          <div className="home-text">
-            <div className="greeting-wrapper">
-              <span className="greeting-line"></span>
-              <span className="greeting-text">Hello, I'm</span>
-            </div>
-            
-            <h1 className="name-title">
-              <span className="name-first">Alex</span>
-              <span className="name-last">Renny</span>
-            </h1>
-            
-            <div className="role-wrapper">
-              <div className="typing-container">
-                <span className="static-text">I'm a </span>
-                <div className="dynamic-text-wrapper">
-                  <span className="dynamic-text"></span>
-                </div>
-              </div>
-            </div>
-            
-            <p className="description">
-              Crafting innovative digital experiences with clean code and creative design. 
-              Passionate about building solutions that make a difference.
-            </p>
-            
-            <div className="cta-buttons">
-              <a href="#projects" className="btn btn-primary">
-                <span>View My Work</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-              <a href="#contact" className="btn btn-secondary">
-                <span>Get In Touch</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M2.5 5.83333L10 10.4167L17.5 5.83333M2.5 14.1667L10 10.4167L17.5 14.1667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </a>
-            </div>
-            
-            <div className="social-proof">
-              <div className="stats">
-                <div className="stat-item">
-                  <span className="stat-number">5+</span>
-                  <span className="stat-label">Projects</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
-                  <span className="stat-number">2</span>
-                  <span className="stat-label">Internships</span>
-                </div>
-                <div className="stat-divider"></div>
-                <div className="stat-item">
-                  <span className="stat-number">8+</span>
-                  <span className="stat-label">Certificates</span>
-                </div>
-              </div>
-            </div>
+      <div className="home-container">
+        <div className="home-text">
+          <div className="home-badge"><span className="badge-dot" /> Available for opportunities</div>
+          <p className="home-greeting">CYBER FORENSICS · SOFTWARE DEVELOPMENT</p>
+          <h1 className="home-name">Alex <span className="name-gradient">Renny</span></h1>
+          <p className="home-role">Building useful products with a security-first mindset.</p>
+          <p className="home-description">I’m a Cyber Forensics student and developer focused on secure digital experiences, thoughtful interfaces, and practical tools. Currently building <strong>SentinelX IDPS</strong>.</p>
+          <div className="home-cta">
+            <a href="#projects" className="btn-primary">Explore my work <span aria-hidden="true">↗</span></a>
+            <a href="#apps" className="btn-secondary">Apps &amp; downloads <span aria-hidden="true">↓</span></a>
           </div>
-          
-          <div className="home-visual">
-            <div className="profile-container">
-              {/* <div className="profile-orbital">
-                <div className="orbit-ring ring-1"></div>
-                <div className="orbit-ring ring-2"></div>
-                <div className="orbit-ring ring-3"></div>
-                <div className="orbit-dot dot-1"></div>
-                <div className="orbit-dot dot-2"></div>
-                <div className="orbit-dot dot-3"></div>
-              </div> */}
-              
-              {/* <div className="profile-shape">
-                <div className="profile-image-wrapper">
-                  <img
-                    src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
-                    alt="Alex Renny - Portfolio"
-                    className="profile-image"
-                  />
-                </div>
-              </div> */}
-              
-              <div className="floating-card card-1">
-                <div className="card-icon-wrapper">
-                  {/* <span className="card-emoji">💻</span> */}
-                </div>
-                <div className="card-text">
-                  <small>Available for</small>
-                  <strong>Freelance</strong>
-                </div>
-              </div>
-              
-              <div className="floating-card card-2">
-                <div className="card-icon-wrapper">
-                  {/* <span className="card-emoji">🔒</span> */}
-                </div>
-                <div className="card-text">
-                  <small>Cyber Forensics</small>
-                  <strong>Student</strong>
-                </div>
-              </div>
-            </div>
+          <div className="home-stats">
+            <div className="stat-item"><span className="stat-value">7+</span><span className="stat-label">Projects</span></div>
+            <div className="stat-divider" />
+            <div className="stat-item"><span className="stat-value">4</span><span className="stat-label">Hackathons</span></div>
+            <div className="stat-divider" />
+            <div className="stat-item"><span className="stat-value">8+</span><span className="stat-label">Certifications</span></div>
           </div>
         </div>
-        
-        <div className="scroll-indicator">
-          <span className="scroll-text">Scroll to explore</span>
-          <div className="scroll-mouse">
-            <div className="scroll-wheel"></div>
-          </div>
+        <div className="home-visual">
+          <div className="hero-photo-wrap"><img src="/1780137331105-Photoroom.png" alt="Alex Renny" className="hero-photo" /></div>
+          <div className="hero-note"><span className="hero-note-mark">✳</span><span><strong>Curious by nature.</strong><br/>Builder by practice.</span></div>
+          <div className="hero-index">PORTFOLIO <span>2026</span></div>
         </div>
       </div>
+      <a href="#about" className="scroll-indicator"><span>SCROLL TO EXPLORE</span><i aria-hidden="true">↓</i></a>
     </section>
   );
 }

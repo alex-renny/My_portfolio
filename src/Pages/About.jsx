@@ -1,181 +1,140 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import './About.css';
 
 function About() {
-  const parallaxRef = useRef(null);
-  const imageRef = useRef(null);
-
-  useEffect(() => {
-    const handleParallax = (e) => {
-      if (parallaxRef.current) {
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-        
-        const moveX = (clientX - innerWidth / 2) / innerWidth * 20;
-        const moveY = (clientY - innerHeight / 2) / innerHeight * 20;
-        
-        parallaxRef.current.style.transform = `translate(${moveX}px, ${moveY}px)`;
-      }
-    };
-
-    const handleScroll = () => {
-      if (imageRef.current) {
-        const scrolled = window.scrollY;
-        const rate = scrolled * 0.05;
-        imageRef.current.style.transform = `translateY(${rate}px)`;
-      }
-    };
-
-    window.addEventListener('mousemove', handleParallax);
-    window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleParallax);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+  const highlights = [
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      ),
+      title: 'Cyber Security',
+      desc: 'Forensics, ethical hacking & IDPS development'
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+      ),
+      title: 'Web Development',
+      desc: 'React, full-stack & responsive interfaces'
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <line x1="3" y1="9" x2="21" y2="9"/>
+          <line x1="9" y1="21" x2="9" y2="9"/>
+        </svg>
+      ),
+      title: 'UI/UX Design',
+      desc: 'Intuitive, beautiful user experiences'
+    },
+    {
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      ),
+      title: 'App Development',
+      desc: 'Building tools & APKs for real users'
+    },
+  ];
 
   return (
     <section id="about" className="about-section">
       <div className="container">
         <div className="about-content">
+          {/* Visual */}
           <div className="about-visual">
-            <div className="image-wrapper" ref={imageRef}>
-              <div className="image-container">
+            <div className="about-image-wrapper">
+              <div className="about-image-frame">
                 <img
                   src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
-                  alt="Alex - Web Developer"
-                  className="profile-image"
+                  alt="Alex Renny"
+                  className="about-image"
                 />
-                <div className="image-overlay"></div>
-                <div className="image-border"></div>
+                <div className="corner-br"></div>
               </div>
-              
-              <div className="experience-badge">
-                <div className="badge-pulse"></div>
-                <div className="badge-content">
-                  <span className="badge-number">5+</span>
-                  <span className="badge-label">Projects</span>
+
+              <div className="about-badge">
+                <div className="about-badge-pulse"></div>
+                <div className="about-badge-text">
+                  <strong>7+</strong>
+                  <span>Projects Built</span>
                 </div>
-              </div>
-              
-              <div className="floating-shapes" ref={parallaxRef}>
-                <div className="shape shape-circle"></div>
-                <div className="shape shape-triangle"></div>
-                <div className="shape shape-square"></div>
-                <div className="shape shape-dots"></div>
               </div>
             </div>
           </div>
-          
+
+          {/* Text */}
           <div className="about-text">
-            <div className="section-label reveal-text">
+            <div className="section-label">
               <span className="label-dot"></span>
               <span className="label-text">About Me</span>
               <span className="label-line"></span>
             </div>
-            
-            <h2 className="about-heading reveal-text">
-              <span className="heading-line-1">Crafting Digital</span>
-              <span className="heading-line-2">
-                <span className="highlight">Experiences</span> That Matter
-              </span>
+
+            <h2 className="about-heading">
+              Crafting Digital<br />
+              <span className="highlight">Experiences</span> That Matter
             </h2>
-            
-            <div className="about-description reveal-text">
-              <p className="description-text">
-                I'm a passionate web developer and 
-                <span className="text-highlight"> Cyber Forensics student </span> 
-                with a focus on Cyber Security, Game Development, and Web Development.
-                My academic path is driven by a strong interest in how technology works, how systems can be secured, and how digital experiences are built.
-              </p>
-              <p className="description-text secondary">
-                I have hands-on experience with HTML, CSS, JavaScript, and front-end design, creating responsive and user-focused web interfaces. 
-                I enjoy turning ideas into functional designs while continuously improving my coding practices and understanding of modern development tools.
 
+            <div className="about-desc">
+              <p>
+                I'm a passionate
+                <span className="text-highlight"> Cyber Forensics student </span>
+                with a strong focus on web development and practical digital products.
+                I enjoy building apps like <span className="text-highlight">ChatVerse</span>, a chat platform
+                for real-time messages, voice notes, and image sharing, alongside web and mobile projects.
+              </p>
+              <p>
+                My academic path is driven by curiosity about how systems work, how they can be secured,
+                and how to create digital products people love. I enjoy turning ideas into real, functional
+                solutions while continuously sharpening my skills.
               </p>
             </div>
-            
-            <div className="skills-highlight">
-              <div className="skill-item">
-                <div className="skill-icon-wrapper">
-                  <svg className="skill-icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+
+            <div className="about-highlights">
+              {highlights.map((h, i) => (
+                <div className="highlight-item" key={i}>
+                  <div className="hi-icon">{h.icon}</div>
+                  <div className="hi-info">
+                    <h4>{h.title}</h4>
+                    <p>{h.desc}</p>
+                  </div>
                 </div>
-                <div className="skill-info">
-                  <h4>Front-end Design</h4>
-                  <p>End-to-end web solutions with modern tech stack</p>
-                </div>
-              </div>
-              
-              <div className="skill-item">
-                <div className="skill-icon-wrapper">
-                  <svg className="skill-icon" viewBox="0 0 24 24" fill="none">
-                    <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M3 9H21" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M9 21V9" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                </div>
-                <div className="skill-info">
-                  <h4>UI/UX Design</h4>
-                  <p>Creating intuitive and beautiful user interfaces</p>
-                </div>
-              </div>
-              
-              <div className="skill-item">
-                <div className="skill-icon-wrapper">
-                  <svg className="skill-icon" viewBox="0 0 24 24" fill="none">
-                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <div className="skill-info">
-                  <h4>Performance Optimization</h4>
-                  <p>Lightning-fast, optimized web applications</p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            
-            <div className="cta-group reveal-text">
-              <a href="#projects" className="btn-primary ripple-btn">
-                <span>View Projects</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <div className="about-cta">
+              <a href="#projects" className="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M7.5 15L12.5 10L7.5 5"/>
                 </svg>
-                <div className="btn-shine"></div>
+                View Projects
               </a>
-              <a href="#contact" className="btn-secondary ripple-btn">
-                <span>Let's Talk</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M2.5 5.83333L10 10.4167L17.5 5.83333M2.5 14.1667L10 10.4167L17.5 14.1667" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <a href="#contact" className="btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
                 </svg>
-                <div className="btn-shine"></div>
+                Let's Talk
               </a>
             </div>
           </div>
         </div>
       </div>
-      
-      <div className="background-elements">
-        <div className="grid-overlay"></div>
-        <div className="accent-circle circle-1"></div>
-        <div className="accent-circle circle-2"></div>
-        <div className="accent-circle circle-3"></div>
-        <div className="floating-particles">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="particle" style={{
-              '--x': `${Math.random() * 100}%`,
-              '--y': `${Math.random() * 100}%`,
-              '--size': `${Math.random() * 4 + 2}px`,
-              '--duration': `${Math.random() * 10 + 10}s`,
-              '--delay': `${Math.random() * 5}s`
-            }}></div>
-          ))}
-        </div>
+
+      <div className="about-bg-deco">
+        <div className="about-bg-circle c1"></div>
+        <div className="about-bg-circle c2"></div>
       </div>
     </section>
   );

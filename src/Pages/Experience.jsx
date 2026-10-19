@@ -1,53 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Experience.css';
 
 function Experience() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const timelineRef = useRef(null);
-  const cardsRef = useRef([]);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      
-      // Tilt effect for cards
-      cardsRef.current.forEach((card, index) => {
-        if (card) {
-          const rect = card.getBoundingClientRect();
-          const cardCenterX = rect.left + rect.width / 2;
-          const cardCenterY = rect.top + rect.height / 2;
-          const deltaX = (e.clientX - cardCenterX) / rect.width;
-          const deltaY = (e.clientY - cardCenterY) / rect.height;
-          
-          const tiltX = deltaY * -5;
-          const tiltY = deltaX * 5;
-          
-          card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(10px)`;
-        }
-      });
-    };
-
     const handleScroll = () => {
       if (timelineRef.current) {
-        const timelineRect = timelineRef.current.getBoundingClientRect();
-        const timelineHeight = timelineRect.height;
-        const scrolled = window.scrollY - timelineRect.top + window.innerHeight;
-        const progress = Math.min(Math.max(scrolled / (timelineHeight + window.innerHeight), 0), 1);
-        
+        const rect = timelineRef.current.getBoundingClientRect();
+        const scrolled = window.innerHeight - rect.top;
+        const progress = Math.min(Math.max(scrolled / rect.height, 0), 1);
         const line = timelineRef.current.querySelector('.timeline-line-fill');
-        if (line) {
-          line.style.height = `${progress * 100}%`;
-        }
+        if (line) line.style.height = `${progress * 100}%`;
       }
     };
-
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const experiences = [
@@ -63,14 +31,14 @@ function Experience() {
           <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
         </svg>
       ),
-      description: 'Completed a hands-on internship focused on web development, learning industry best practices and modern development workflows.',
+      description: 'Completed a hands-on internship focused on web development, learning industry best practices, modern development workflows, and building production-ready interfaces.',
       achievements: [
-        'Built responsive web applications',
-        'Collaborated with development team',
-        'Learned Agile methodologies',
-        'Gained real-world project experience'
+        'Built responsive web applications with React',
+        'Collaborated with a senior development team',
+        'Learned Agile methodologies & sprints',
+        'Gained real-world project experience',
       ],
-      tags: ['React', 'JavaScript', 'Git', 'Agile']
+      tags: ['React', 'JavaScript', 'Git', 'Agile'],
     },
     {
       id: '02',
@@ -85,18 +53,18 @@ function Experience() {
           <path d="M2 12l10 5 10-5"/>
         </svg>
       ),
-      description: 'Participated in 4 hackathons, developing innovative solutions under pressure and collaborating with diverse teams to solve real-world challenges.',
+      description: 'Participated in 4 hackathons, developing innovative solutions under time pressure and collaborating with diverse teams to solve real-world challenges.',
       achievements: [
-        'Built AI-powered solutions',
-        '24-hour coding challenges',
-        'Team leadership experience'
+        'Built AI-powered solutions in 24 hours',
+        'Led team strategy & technical planning',
+        'Delivered working prototypes under pressure',
       ],
-      tags: ['Problem Solving', 'Innovation', 'Teamwork', 'Rapid Prototyping']
+      tags: ['Problem Solving', 'Innovation', 'Teamwork', 'Rapid Prototyping'],
     },
     {
       id: '03',
       title: 'Certifications',
-      organization: '5+ Certifications',
+      organization: '8+ Certifications',
       role: 'Continuous Learner',
       color: '#f59e0b',
       icon: (
@@ -105,14 +73,14 @@ function Experience() {
           <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
       ),
-      description: 'Earned multiple professional certifications in cybersecurity, web development, and emerging technologies to enhance my skill set.',
+      description: 'Earned 8+ professional certifications in cybersecurity, web development, and emerging technologies to continuously sharpen my skill set.',
       achievements: [
-        'Internship Certificate in React',
-        'Nasa Space Apps Certification',
+        'Internship Certificate in React (TechWingsys)',
+        'NASA Space Apps Certification',
         'IIT JavaScript Certification',
-        'Microsoft Word Certification'
+        'Microsoft Word Certification',
       ],
-      tags: ['React', 'Javascript', 'Web Dev', 'Professional']
+      tags: ['React', 'JavaScript', 'Cybersecurity', 'Professional'],
     },
     {
       id: '04',
@@ -126,28 +94,18 @@ function Experience() {
           <path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/>
         </svg>
       ),
-      description: 'Pursuing a Bachelor\'s degree in Cyber Forensics with a strong focus on digital investigation, security analysis, and forensic technologies.',
+      description: 'Pursuing a Bachelor\'s degree in Cyber Forensics with a strong focus on digital investigation, security analysis, and forensic technologies. Built SentinelX IDPS as a major project.',
       achievements: [
-        // 'CGPA: 8.5/10',
-        'Specialized in Cyber Forensics',
-        'Network Security Projects',
-        'Malware Analysis Research'
+        'Specialized in Cyber Forensics & IDPS',
+        'Network Security research & projects',
+        'Malware analysis & digital forensics',
       ],
-      tags: ['Digital Forensics', 'Security', 'Research', 'Academics']
-    }
+      tags: ['Digital Forensics', 'Security', 'IDPS', 'Research'],
+    },
   ];
 
   return (
     <section id="experience" className="experience-section">
-      {/* Cursor Follow Effect */}
-      {/* <div 
-        className="cursor-glow"
-        style={{
-          '--mouse-x': `${mousePosition.x}px`,
-          '--mouse-y': `${mousePosition.y}px`
-        }}
-      ></div> */}
-
       <div className="container">
         <div className="section-header">
           <div className="header-label">
@@ -156,51 +114,37 @@ function Experience() {
             <span className="label-dot"></span>
           </div>
           <h2 className="section-title">
-            <span className="title-line-1">Experience &</span>
-            <span className="title-line-2">
-              <span className="highlight">Achievements</span>
-            </span>
+            Experience &amp; <span className="highlight">Achievements</span>
           </h2>
           <p className="section-subtitle">
-            A showcase of my academic journey, certifications, hackathons, and hands-on learning experiences.
+            A timeline of my academic journey, certifications, hackathons, and hands-on learning experiences.
           </p>
         </div>
 
         <div className="experience-timeline" ref={timelineRef}>
           <div className="timeline-line">
             <div className="timeline-line-fill"></div>
-            <div className="timeline-dots">
-              <div className="timeline-dot"></div>
-              <div className="timeline-dot"></div>
-              <div className="timeline-dot"></div>
-              <div className="timeline-dot"></div>
-            </div>
           </div>
-          
+
           {experiences.map((exp, index) => (
-            <div 
-              key={exp.id} 
+            <div
+              key={exp.id}
               className="experience-card"
-              ref={el => cardsRef.current[index] = el}
               style={{ '--animation-delay': `${index * 0.15}s` }}
             >
               <div className="card-marker" style={{ background: exp.color }}>
-                <div className="marker-pulse"></div>
+                <div className="marker-pulse" style={{ borderColor: exp.color }}></div>
                 <span className="marker-number">{exp.id}</span>
               </div>
-              
-              <div className="card-content">
-                <div className="card-glow" style={{ background: `${exp.color}10` }}></div>
-                
+
+              <div className="card-content" style={{ '--card-color': exp.color }}>
                 <div className="card-header">
                   <div className="company-info">
                     <div className="company-logo" style={{ background: `${exp.color}15`, color: exp.color }}>
-                      <div className="logo-icon">{exp.icon}</div>
+                      {exp.icon}
                     </div>
                     <div>
-                      <h3 className="company-name" style={{ color: exp.color }}>
-                        {exp.organization}
-                      </h3>
+                      <h3 className="company-name" style={{ color: exp.color }}>{exp.organization}</h3>
                       <p className="role-title">{exp.role}</p>
                     </div>
                   </div>
@@ -208,63 +152,46 @@ function Experience() {
                     {exp.title}
                   </span>
                 </div>
-                
+
                 <p className="card-description">{exp.description}</p>
-                
+
                 <div className="achievements-list">
-                  {exp.achievements.map((achievement, i) => (
+                  {exp.achievements.map((a, i) => (
                     <div key={i} className="achievement-item">
                       <svg className="achievement-icon" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                       </svg>
-                      <span>{achievement}</span>
+                      <span>{a}</span>
                     </div>
                   ))}
                 </div>
-                
-                <div className="card-footer">
-                  <div className="tech-tags">
-                    {exp.tags.map((tag, i) => (
-                      <span key={i} className="tag">{tag}</span>
-                    ))}
-                  </div>
+
+                <div className="tech-tags">
+                  {exp.tags.map((tag, i) => (
+                    <span key={i} className="tag">{tag}</span>
+                  ))}
                 </div>
 
-                <div className="card-decoration">
-                  <div className="decoration-line" style={{ background: exp.color }}></div>
-                </div>
+                <div className="decoration-line" style={{ background: exp.color }}></div>
               </div>
             </div>
           ))}
         </div>
-        
-        <div className="cta-wrapper">
-          <a href="#contact" className="cta-button">
-            <span>Let's Connect</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-              <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+
+        <div className="exp-cta">
+          <a href="#contact" className="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="22" y1="2" x2="11" y2="13"/>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"/>
             </svg>
-            <div className="btn-shine"></div>
+            Let's Connect
           </a>
         </div>
       </div>
-      
-      <div className="background-decoration">
-        <div className="grid-pattern"></div>
-        <div className="gradient-blob blob-1"></div>
-        <div className="gradient-blob blob-2"></div>
-        <div className="gradient-blob blob-3"></div>
-        <div className="floating-particles">
-          {[...Array(15)].map((_, i) => (
-            <div key={i} className="floating-particle" style={{
-              '--x': `${Math.random() * 100}%`,
-              '--y': `${Math.random() * 100}%`,
-              '--size': `${Math.random() * 3 + 1}px`,
-              '--duration': `${Math.random() * 8 + 8}s`,
-              '--delay': `${Math.random() * 5}s`
-            }}></div>
-          ))}
-        </div>
+
+      <div className="exp-bg-deco">
+        <div className="exp-blob b1"></div>
+        <div className="exp-blob b2"></div>
       </div>
     </section>
   );
