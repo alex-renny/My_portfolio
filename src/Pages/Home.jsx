@@ -24,7 +24,7 @@ function Home() {
           </div>
         </div>
         <div className="home-visual">
-          <div className="hero-photo-wrap"><img src="/1780137331105-Photoroom.png" alt="Alex Renny" className="hero-photo" /></div>
+          <div className="hero-photo-wrap"><img src="/alex-home-cutout.png" alt="Alex Renny, seated with arms folded" className="hero-photo" /></div>
           <div className="hero-note"><span className="hero-note-mark">✳</span><span><strong>Curious by nature.</strong><br/>Builder by practice.</span></div>
           <div className="hero-index">PORTFOLIO <span>2026</span></div>
         </div>

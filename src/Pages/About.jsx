@@ -56,8 +56,8 @@ function About() {
             <div className="about-image-wrapper">
               <div className="about-image-frame">
                 <img
-                  src="/WhatsApp Image 2024-08-26 at 1.40.39 PM.jpeg"
-                  alt="Alex Renny"
+                  src="/alex-about-cutout.png"
+                  alt="Alex Renny, seated and gesturing with his hands"
                   className="about-image"
                 />
                 <div className="corner-br"></div>
